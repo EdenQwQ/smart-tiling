@@ -1,0 +1,12 @@
+#!/bin/sh
+
+STATFILE=~/.config/hypr/tmp/all_float
+stat=$(cat $STATFILE)
+if [[ $stat == 0 ]]; then
+  echo 1 > $STATFILE
+  hyprctl keyword windowrule "float,.*"
+else
+  echo 0 > $STATFILE
+  hyprctl keyword windowrule "tile,.*"
+  hyprctl keyword windowrule "float,^(yad)$"
+fi

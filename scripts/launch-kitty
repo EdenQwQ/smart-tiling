@@ -1,0 +1,5 @@
+#!/bin/sh
+
+kitty &
+sleep 0.5
+~/.config/hypr/scripts/tile-active-workspace

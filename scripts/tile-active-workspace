@@ -1,0 +1,20 @@
+#!/bin/sh
+
+if [ $# -gt 0 ]; then
+    workspace=$1
+else
+    workspace=$(hyprctl activeworkspace | grep 'workspace ID' | head -n1 | sd 'workspace ID .* \((.*)\).*' '$1')
+fi
+
+echo $workspace
+
+tmpfile="$(dirname "$0")/../tmp/canvas-pos-$workspace"
+script="$(dirname "$0")/smart-tile.py"
+
+if [ -f "$tmpfile" ]; then
+    x=$(cut -d',' -f1 < "$tmpfile")
+    y=$(cut -d',' -f2 < "$tmpfile")
+    python $script --canvas_pos="$x,$y" $workspace
+else
+    python $script $workspace
+fi

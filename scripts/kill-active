@@ -1,0 +1,6 @@
+#!/bin/sh
+
+current_workspace=$(hyprctl activeworkspace | grep 'workspace ID' | head -n1 | sd 'workspace ID .* \((.*)\).*' '$1')
+hyprctl dispatch killactive
+sleep 1
+~/.config/hypr/scripts/tile-active-workspace $current_workspace

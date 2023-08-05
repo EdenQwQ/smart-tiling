@@ -1,0 +1,21 @@
+#!/bin/sh
+
+out=$(slurp)
+
+position=$(echo $out | cut -d' ' -f1)
+size=$(echo $out | cut -d' ' -f2)
+
+x=$(echo $position | cut -d',' -f1)
+y=$(echo $position | cut -d',' -f2)
+w=$(echo $size | cut -d'x' -f1)
+h=$(echo $size | cut -d'x' -f2)
+echo $x
+echo $y
+echo $w
+echo $h
+
+kitty &
+sleep 0.5
+hyprctl dispatch moveactive exact $x $y
+hyprctl dispatch resizeactive exact $w $h
+# python ~/.config/hypr/scripts/smart-tile.py

@@ -1,0 +1,85 @@
+include /home/eden/.config/swhkd/swhkdrc
+include /home/eden/.config/swhkd/wayland.swhkdrc
+# include /home/eden/.config/swhkd/mpc.swhkdrc
+# include /home/eden/.config/swhkd/wayshot.swhkdrc
+
+ignore ctrl + alt + l
+ignore ctrl + alt + e
+ignore super + space
+ignore super + w
+
+super + b
+  /home/eden/.config/hypr/scripts/toggle-waybar
+
+print
+  wayshot
+
+super + shift + f
+  /home/eden/.config/hypr/scripts/fullscreen
+
+# super + alt + space
+#   /home/eden/.config/hypr/scripts/toggle-all-float
+
+super + shift + t
+  /home/eden/.config/hypr/scripts/tile-active-workspace-centered
+
+super + t
+  /home/eden/.config/hypr/scripts/tile-active-workspace
+
+super + enter
+  /home/eden/.config/hypr/scripts/launch-kitty
+
+super + shift + enter
+  /home/eden/.config/hypr/scripts/launch-kitty-slurp
+
+super + q
+  /home/eden/.config/hypr/scripts/kill-active
+
+super + shift + {1-9, 0}
+  /home/eden/.config/hypr/scripts/switch-workspace {1-9, 0}
+
+super + p
+  /home/eden/.config/hypr/scripts/tofi-run
+
+super + r
+  @enter resize
+
+mode resize
+{h, l, j, k}
+  hyprctl dispatch resizeactive {\-5 0, 5 0, 0 5, 0 \-5}
+
+ctrl + {h, l, j, k}
+  /home/eden/.config/hypr/scripts/fold-window {left,right,down,up}
+
+{left, right, down, up}
+  hyprctl dispatch resizeactive {\-25 0, 25 0, 0 25, 0 \-25}
+
+ctrl + {left, right, down, up}
+  /home/eden/.config/hypr/scripts/fold-window {left,right,down,up}
+
+capslock
+  @escape && sleep 0.5; /home/eden/.config/hypr/scripts/tile-active-workspace
+
+q
+  @escape
+endmode
+
+super + shift + {left, right, down, up}
+  /home/eden/.config/hypr/scripts/move-canvas {\-25 0, 25 0, 0 25, 0 \-25}
+
+super + shift + m
+  @enter move-canvas
+
+mode move-canvas
+{h, l, j, k}
+  /home/eden/.config/hypr/scripts/move-canvas {\-5 0, 5 0, 0 5, 0 \-5}
+
+{left, right, down, up}
+  /home/eden/.config/hypr/scripts/move-canvas {\-25 0, 25 0, 0 25, 0 \-25}
+
+capslock
+  @escape
+
+q
+  @escape
+endmode

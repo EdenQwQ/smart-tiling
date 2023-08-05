@@ -1,0 +1,18 @@
+#!/bin/sh
+
+tmpfile=~/.config/hypr/tmp/waybar-hidden
+file=~/.config/hypr/scripts/smart-tile.py
+
+hidden=$(cat $tmpfile)
+if [ "$hidden" = "1" ]; then
+    sd 'canvas_pos = Position\(5, 5\)' 'canvas_pos = Position(5, 43)' $file
+    sd 'canvas_size = Size\(1270, 790\)' 'canvas_size = Size(1270, 753)' $file
+    echo 0 > $tmpfile
+else
+    sd 'canvas_pos = Position\(5, 43\)' 'canvas_pos = Position(5, 5)' $file
+    sd 'canvas_size = Size\(1270, 753\)' 'canvas_size = Size(1270, 790)' $file
+    echo 1 > $tmpfile
+fi
+
+python $file all
+pkill -SIGUSR1 waybar

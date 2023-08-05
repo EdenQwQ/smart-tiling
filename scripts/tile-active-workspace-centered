@@ -1,0 +1,5 @@
+#!/bin/sh
+
+current_workspace=$(hyprctl activeworkspace | grep 'workspace ID' | head -n1 | sd 'workspace ID .* \((.*)\).*' '$1')
+rm ~/.config/hypr/tmp/canvas-pos-$current_workspace
+python ~/.config/hypr/scripts/smart-tile.py

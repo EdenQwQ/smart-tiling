@@ -1,0 +1,6 @@
+#!/bin/sh
+
+app=$(tofi-run)
+sh -c "$app" &
+sleep 1
+~/.config/hypr/scripts/tile-active-workspace
