@@ -42,7 +42,6 @@ def find_spare_space(existing_windows, newwindow_size):
     for window in existing_windows:
         nodes.append(window.topright())
         nodes.append(window.bottomleft())
-        nodes.append(window.bottomright())
         xs.append(window.pos.x)
         ys.append(window.pos.y)
     nodes.append(Position(canvas_size.w, canvas_size.h))
