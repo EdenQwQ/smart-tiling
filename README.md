@@ -11,7 +11,7 @@ git clone https://github.com/edenqwq/smart-tiling
 Copy the repository to the config directory for Hyprland:
 
 ```bash
-cp -r smart-tiling ~/.config/hypr/
+cp -r smart-tiling/* ~/.config/hypr/
 ```
 
 Modify `swhkdrc` and change the home directory to your own.
